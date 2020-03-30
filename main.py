@@ -1,10 +1,19 @@
-a=float(input("Digite un número:\n"))
-b=int(input("Digite un número entero:\n"))
-c=float(input("Digite otro número:\n"))
-d=int(input("Digite un número positivo:\n"))
+print("""Bienvenido usuario, para resolver la ecuacion cuadratica, primero ingrese el
+valor del numero que acompaña a la  elevada al cuadrado, luego el que acompaña a la 
+x y por último ingrese el numero sin la x.""")
 
-print("El doble del primer número ingresado es:\n",a*2)
-print("El producto de los números ingresados es:\n",a*c)
-print("El cuadrado del número",b,"es:\n",b*b,)
-print("La raíz del número",d,"es:\n",d**1/2,)
+a=int(input("1."))
+b=int(input("2."))
+c=int(input("3."))
 
+d = b**2 - (4*a*c)
+
+if d > 0:
+    x1 = (-b+(d**1/2))/2*a
+    x2 = (-b-(d**1/2))/2*a
+    print("X vale 0 cuando toma el valor de",x1,"y ",x2,)
+elif d < 0:
+    print("No existe solución a la ecuación cuadrática dentro del dominio de los números reales.")
+else:
+    x = -b/2*a
+    print("X vale 0 cuando toma el valor de",x,)
