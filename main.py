@@ -13,9 +13,9 @@ d = b**2 - (4*a*c)
 if d > 0:
     x1 = (-b+math.sqrt(d))/2*a
     x2 = (-b-math.sqrt(d))/2*a
-    print("X vale 0 cuando toma el valor de",x1,"y ",x2,)
+    print("X vale 0 cuando toma el valor de",x1,"y",x2,".")
 elif d < 0:
     print("No existe solución a la ecuación cuadrática dentro del dominio de los números reales.")
 else:
     x = -b/2*a
-    print("X vale 0 cuando toma el valor de",x,)
+    print("X vale 0 cuando toma el valor de",x,".")
