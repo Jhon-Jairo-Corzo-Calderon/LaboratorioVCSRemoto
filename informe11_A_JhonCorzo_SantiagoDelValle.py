@@ -33,3 +33,8 @@ def imprimir(arreglo,n_arreglo):
 #Punto d
 imprimir(ingresos,"ingresos")
 imprimir(egresos,"egresos")
+
+#Punto e
+def calculador(a,b):
+    r=a-b
+    return r
