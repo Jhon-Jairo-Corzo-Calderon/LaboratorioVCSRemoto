@@ -42,3 +42,22 @@ def calculador(a,b):
 #Punto f
 ganancias = calculador(ingresos,egresos)
 imprimir(ganancias,"ganancias")
+
+#Punto g
+def mejor_ciudad(arreglo):
+    mayor=-31
+    for i in range(4):
+        comp = np.sum(arreglo[i,:])
+        if mayor<comp:
+            mayor=comp
+            ciud=i
+    if ciud == 0:
+        print("La mejor ciudad es Bucaramanga, con {} millones de pesos en ganancias.".format(mayor))
+    elif ciud==1:
+        print("La mejor ciudad es Floridablanca, con {} millones de pesos en ganancias.".format(mayor))
+    elif ciud==2:
+        print("La mejor ciudad es Girón, con {} millones de pesos en ganancias.".format(mayor))
+    else:
+        print("La mejor ciudad es Piedecuesta, con {} millones de pesos en ganancias.".format(mayor))
+
+mejor_ciudad(ganancias)
