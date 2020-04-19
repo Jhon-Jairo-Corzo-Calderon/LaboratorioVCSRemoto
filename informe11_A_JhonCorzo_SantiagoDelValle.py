@@ -37,4 +37,8 @@ imprimir(egresos,"egresos")
 #Punto e
 def calculador(a,b):
     r=a-b
-    return r
+    return 
+
+#Punto f
+ganancias = calculador(ingresos,egresos)
+imprimir(ganancias,"ganancias")
