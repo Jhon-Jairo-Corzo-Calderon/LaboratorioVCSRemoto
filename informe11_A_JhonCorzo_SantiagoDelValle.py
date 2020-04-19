@@ -29,3 +29,7 @@ def imprimir(arreglo,n_arreglo):
         else:
             print("                            TABLA DE {}                                         ".format(n_arreglo))
     print("╚══════════════╩════════════════════════════════════════════════════════════════╝\n")
+
+#Punto d
+imprimir(ingresos,"ingresos")
+imprimir(egresos,"egresos")
