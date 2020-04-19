@@ -101,3 +101,6 @@ def mejor_mes(arreglo):
             print("En Piedecuesta el {} mes hubo la mayor ganancia con {} millones de pesos.".format(mes,mayor))
 
 mejor_mes(ganancias)
+
+
+
