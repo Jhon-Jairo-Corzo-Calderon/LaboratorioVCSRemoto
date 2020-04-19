@@ -37,7 +37,7 @@ imprimir(egresos,"egresos")
 #Punto e
 def calculador(a,b):
     r=a-b
-    return 
+    return r
 
 #Punto f
 ganancias = calculador(ingresos,egresos)
@@ -80,3 +80,24 @@ def peor_ciudad(arreglo):
         print("La peor ciudad es Piedecuesta, con {} millones.".format(menor))
 
 peor_ciudad(ganancias)
+
+#Punto i 
+def mejor_mes(arreglo):
+    for i in range(4):
+        mayor=-31
+        mes=0
+        for x in range(12):
+            comp=arreglo[i,x]
+            if comp>mayor:
+                mayor=comp
+                mes = x+1
+        if i==0:
+            print("En Bucaramanga el {} mes hubo la mayor ganancia con {} millones de pesos.".format(mes,mayor))
+        elif i==1:
+            print("En Floridablanca el {} mes hubo la mayor ganancia con {} millones de pesos.".format(mes,mayor))
+        elif i==2:
+            print("En Girón el {} mes hubo la mayor ganancia con {} millones de pesos.".format(mes,mayor))
+        elif i==3:
+            print("En Piedecuesta el {} mes hubo la mayor ganancia con {} millones de pesos.".format(mes,mayor))
+
+mejor_mes(ganancias)
