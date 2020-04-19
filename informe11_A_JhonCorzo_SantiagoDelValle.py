@@ -61,3 +61,22 @@ def mejor_ciudad(arreglo):
         print("La mejor ciudad es Piedecuesta, con {} millones de pesos en ganancias.".format(mayor))
 
 mejor_ciudad(ganancias)
+
+#Punto h
+def peor_ciudad(arreglo):
+    menor=1441
+    for i in range(4):
+        comp = np.sum(arreglo[i,:])
+        if menor>comp:
+            ciud=i
+            menor=comp
+    if ciud ==0:
+        print("La peor ciudad es Bucaramanga, con {} millones de pesos.".format(menor))
+    elif ciud==1:
+        print("La peor ciudad es Floridablanca, con {} millones.".format(menor))
+    elif ciud==2:
+        print("La peor ciudad es Girón, con {} millones.".format(menor))
+    else:
+        print("La peor ciudad es Piedecuesta, con {} millones.".format(menor))
+
+peor_ciudad(ganancias)
