@@ -32,3 +32,54 @@ for i in presion_semanal:
 promedio=acum/52
 
 print("La media o promedio de los datos es {}KPa, la mediana es {}KPa y la diferencia de estas es {}".format(promedio,mediana,promedio-mediana))
+
+#Ejercicio 4
+presion_sup=[]
+cont=0    #Con los 2 primeros contadores se evalua si los promedios semanales son mayores al promedio mensual y son consecutivos.
+contc=0   
+contb=0   #Este contador solo se va a usar para indicar las semanas en las que se cumplen las condiciones.
+
+for u in presion_semanal:
+    if u>promedio and cont==0:
+        presion_sup.append(['Semana {}'.format(contb+1),u])
+        contc+=1
+        cont+=1
+    elif u>promedio and contc==cont-1:
+        presion_sup.append(['Semana {}'.format(contb+1),u])
+        contc+=1
+    
+    if cont!=0:
+        if contc==cont-1:
+            cont+=1
+        else:
+            cont=0
+            contc=0
+    contb+=1
+
+presion_inf=[]
+cont=0
+contc=0
+contb=0
+
+for o in presion_semanal:
+    if o<promedio and cont==0:
+        presion_inf.append(['Semana {}'.format(contb+1),o])
+        contc+=1
+        cont+=1
+    elif o<promedio and contc==cont-1:
+        presion_inf.append(['Semana {}'.format(contb+1),o])
+        contc+=1
+    elif o<promedio and contc!=cont-1:
+        cont=0
+        contc=0
+
+    if cont!=0:
+        if contc==cont-1:
+            cont+=1
+        else:
+            cont=0
+            contc=0
+    contb+=1
+
+print("\nLas semanas consecutivas en las que el promedio semanal fue mayor al promedio anual son:\n{}\n".format(presion_sup))
+print("Las semanas consecutivas en las que el promedio semanal fue menor al promedio anual son:\n{}\n".format(presion_inf))
