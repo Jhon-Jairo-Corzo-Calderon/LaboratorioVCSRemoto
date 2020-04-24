@@ -20,3 +20,15 @@ for x in presion_semanal:
 dif=mayor-menor
 
 print("El resultado de la diferencia entre la mayor y la menor presión promedio semanal registrada es de",dif)
+
+#Ejercicio 3
+bpresion_semanal=presion_semanal.copy()
+bpresion_semanal.sort()
+mediana = (bpresion_semanal[25]+bpresion_semanal[26])/2
+
+acum=0
+for i in presion_semanal:
+    acum=i +acum
+promedio=acum/52
+
+print("La media o promedio de los datos es {}KPa, la mediana es {}KPa y la diferencia de estas es {}".format(promedio,mediana,promedio-mediana))
