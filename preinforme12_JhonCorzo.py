@@ -83,3 +83,122 @@ for o in presion_semanal:
 
 print("\nLas semanas consecutivas en las que el promedio semanal fue mayor al promedio anual son:\n{}\n".format(presion_sup))
 print("Las semanas consecutivas en las que el promedio semanal fue menor al promedio anual son:\n{}\n".format(presion_inf))
+
+#Ejercicio 6
+#6.1
+
+temperatura_semanal=[]
+for k in presion_semanal:
+    t=(k*510)/(17.16*8.314472)
+    temperatura_semanal.append(t)
+
+acum=0
+for ii in temperatura_semanal:
+    acum=ii+acum
+temp_pro=acum/52
+print("La temperatura promedio de las semanas es {}°C".format(temp_pro))
+
+#6.2
+acum=0
+for p in temperatura_semanal:
+    sumr=(p-temp_pro)**2
+    acum=acum+sumr
+
+desviacion=math.sqrt(acum/52)
+
+print("La desviación estandar de las mediciones en temperaturas registradas a lo largo del año es",desviacion)
+
+#6.3
+presiontemp_sup=[]
+presiontemp1_sup=[]
+cont=0   
+contc=0   
+contb=0   
+
+for u in presion_semanal:
+    if u>promedio and cont==0:
+        presiontemp_sup.append(['Semana {}, presión {}KPa y temperatura {}°C'.format(contb+1,u,temperatura_semanal[contb])])
+        presiontemp1_sup.append([u,temperatura_semanal[contb]])
+        contc+=1
+        cont+=1
+    elif u>promedio and contc==cont-1:
+        presiontemp_sup.append(['Semana {}, presión {}KPa y temperatura {}°C'.format(contb+1,u,temperatura_semanal[contb])])
+        presiontemp1_sup.append([u,temperatura_semanal[contb]])
+        contc+=1
+    
+    if cont!=0:
+        if contc==cont-1:
+            cont+=1
+        else:
+            cont=0
+            contc=0
+    contb+=1
+
+presiontemp_inf=[]
+presiontemp1_inf=[]
+cont=0
+contc=0
+contb=0
+
+for o in presion_semanal:
+    if o<promedio and cont==0:
+        presiontemp_inf.append(['Semana {}, presión {}KPa y temperatura {}°C'.format(contb+1,u,temperatura_semanal[contb])])
+        presiontemp1_inf.append([u,temperatura_semanal[contb]])
+        contc+=1
+        cont+=1
+    elif o<promedio and contc==cont-1:
+        presiontemp_inf.append(['Semana {}, presión {}KPa y temperatura {}°C'.format(contb+1,u,temperatura_semanal[contb])])
+        presiontemp1_inf.append([u,temperatura_semanal[contb]])
+        contc+=1
+    elif o<promedio and contc!=cont-1:
+        cont=0
+        contc=0
+
+    if cont!=0:
+        if contc==cont-1:
+            cont+=1
+        else:
+            cont=0
+            contc=0
+    contb+=1
+
+print("\nLas semanas consecutivas en las que el promedio semanal fue mayor al promedio anual, con su respectiva temperatura, son:\n{}\n".format(presiontemp_sup))
+print("Las semanas consecutivas en las que el promedio semanal fue menor al promedio anual, con su respectiva temperatura, son:\n{}\n".format(presiontemp_inf))
+
+#6.4
+def desviacion_muestra(ini,fin,lista):
+    acum=0
+    des=0
+    cont=0
+    for w in range(ini-1,fin):
+        if w == ini-1:
+            for nu in range(fin):
+                acum=acum+lista[nu][1]
+                cont+=1
+            prom=acum/cont
+        else:
+            des=((prom - lista[w][1])**2)+des
+    des=math.sqrt(des/fin-1)
+    return des
+
+print("La desviación estandar en la semana 1 a la 7, en este tiempo la presión estuvo por debajo del promedio, es",desviacion_muestra(0,7,presiontemp1_inf))
+print("La desviación estandar en la semana 8 a la 19, en este tiempo la presión estuvo por encima del promedio, es",desviacion_muestra(0,11,presiontemp1_sup))
+print("La desviación estandar en la semana 20 a la 35, en este tiempo la presión estuvo por debajo del promedio, es",desviacion_muestra(8,23,presiontemp1_inf))
+print("La desviación estandar en la semana 36 a la 47, en este tiempo la presión estuvo por encima del promedio, es",desviacion_muestra(12,24,presiontemp1_sup))
+print("La desviación estandar en la semana 48 a la 52, en este tiempo la presión estuvo por debajo del promedio, es",desviacion_muestra(24,28,presiontemp1_inf))
+
+#6.5
+def media(ini,fin,lista):
+    acum=0
+    cont=0
+    for nu in range(ini,fin):
+        acum=acum+lista[nu][1]
+        cont+=1
+    prom=acum/cont
+    return prom
+
+print("\nLa desviación estandar en la semana 1 a la 7, en este tiempo la presión estuvo por debajo del promedio, es {}, y el promedio de temperatura durante estas semanas fue de {}°C.\n".format(desviacion_muestra(0,7,presiontemp1_inf),media(0,7,presiontemp1_inf)))
+print("La desviación estandar en la semana 8 a la 19, en este tiempo la presión estuvo por encima del promedio, es {}, y el promedio de temperatura durante estas semanas fue de {}°C.\n".format(desviacion_muestra(0,11,presiontemp1_sup),media(0,11,presiontemp1_sup)))
+print("La desviación estandar en la semana 20 a la 35, en este tiempo la presión estuvo por debajo del promedio, es {}, y el promedio de temperatura durante estas semanas fue de {}°C.\n".format(desviacion_muestra(8,23,presiontemp1_inf),media(8,23,presiontemp1_inf)))
+print("La desviación estandar en la semana 36 a la 47, en este tiempo la presión estuvo por encima del promedio, es {}, y el promedio de temperatura durante estas semanas fue de {}°C.\n".format(desviacion_muestra(12,24,presiontemp1_sup),media(12,24,presiontemp1_sup)))
+print("La desviación estandar en la semana 48 a la 52, en este tiempo la presión estuvo por debajo del promedio, es {}, y el promedio de temperatura durante estas semanas fue de {}°C.\n".format(desviacion_muestra(24,28,presiontemp1_inf),media(24,28,presiontemp1_inf)))
